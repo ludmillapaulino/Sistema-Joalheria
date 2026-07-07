@@ -11,23 +11,22 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
 
     public SistemaJoalheria() {
 
+        this.joias = new HashMap<>();
         this.gravador = new GravadorDeDados();
 
-        try {
-            this.joias = gravador.recuperarDados();
-        } catch (IOException e) {
-            this.joias = new HashMap<>();
-        }
     }
 
     @Override
-    public void cadastrarJoia(Joia joia) throws Exception {
+    public boolean cadastrarJoia(String nome, String material, double preco) {
 
-        if (joia.getPreco() < 0) {
-            throw new Exception("Preço inválido");
+        if (joias.containsKey(nome) || preco < 0) {
+            return false;
         }
 
-        joias.put(joia.getNome(), joia);
+        Joia joia = new Joia(nome, material, preco);
+        joias.put(nome, joia);
+
+        return true;
     }
 
     @Override
@@ -37,15 +36,22 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
 
     @Override
     public boolean removerJoia(String nome) {
-        return joias.remove(nome) != null;
+
+        if (joias.containsKey(nome)) {
+            joias.remove(nome);
+            return true;
+        }
+
+        return false;
     }
 
     @Override
     public void salvarDados() throws IOException {
-        gravador.gravarDados(joias);
+        gravador.salvarJoias(joias);
     }
 
-    public Map<String, Joia> getJoias() {
-        return joias;
+    @Override
+    public void recuperarDados() throws IOException {
+        joias = gravador.recuperarJoias();
     }
 }

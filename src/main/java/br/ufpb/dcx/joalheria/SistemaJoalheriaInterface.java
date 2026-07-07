@@ -1,9 +1,12 @@
 package br.ufpb.dcx.joalheria;
 
+import java.io.IOException;
+
 public interface SistemaJoalheriaInterface {
 
-    void cadastrarJoia(Joia joia) throws Exception;
+    boolean cadastrarJoia(String nome, String material, double preco);
     Joia pesquisarJoia(String nome);
     boolean removerJoia(String nome);
-    void salvarDados() throws java.io.IOException;
+    void salvarDados() throws IOException;
+    void recuperarDados() throws IOException;
 }

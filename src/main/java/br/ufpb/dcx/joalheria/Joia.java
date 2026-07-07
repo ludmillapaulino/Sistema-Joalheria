@@ -9,9 +9,6 @@ public class Joia implements Serializable {
     private String material;
     private double preco;
 
-    public Joia() {
-    }
-
     public Joia(String nome, String material, double preco) {
         this.nome = nome;
         this.material = material;
@@ -22,24 +19,38 @@ public class Joia implements Serializable {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getMaterial() {
         return material;
-    }
-
-    public void setMaterial(String material) {
-        this.material = material;
     }
 
     public double getPreco() {
         return preco;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Joia joia = (Joia) o;
+        return Objects.equals(nome, joia.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome);
     }
 
     @Override
@@ -49,26 +60,5 @@ public class Joia implements Serializable {
                 ", material='" + material + '\'' +
                 ", preco=" + preco +
                 '}';
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nome, material, preco);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-
-        if (this == obj) {
-            return true;
-        }
-
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-
-        Joia joia = (Joia) obj;
-
-        return Objects.equals(nome, joia.nome);
     }
 }
