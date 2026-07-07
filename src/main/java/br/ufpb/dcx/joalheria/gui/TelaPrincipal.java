@@ -11,52 +11,58 @@ import java.awt.*;
 
 public class TelaPrincipal extends JFrame {
 
-    JLabel linha1, linha2;
+    private JLabel titulo;
+    private JLabel imagem;
 
-    SistemaJoalheria sistema = new SistemaJoalheria();
+    private SistemaJoalheria sistema = new SistemaJoalheria();
 
-    JMenuBar barraDeMenu = new JMenuBar();
+    private JMenuBar barraDeMenu = new JMenuBar();
 
     public TelaPrincipal() {
 
         setTitle("Sistema de Joalheria");
         setSize(800, 600);
-        setLocation(150, 150);
+        setLocationRelativeTo(null);
         setResizable(false);
-        getContentPane().setBackground(Color.white);
 
-        linha1 = new JLabel("Sistema de Joalheria", JLabel.CENTER);
-        linha1.setForeground(Color.BLUE);
-        linha1.setFont(new Font("Serif", Font.BOLD, 24));
+        getContentPane().setBackground(new Color(255, 253, 230));
 
-        linha2 = new JLabel("Gerenciamento de Joias", JLabel.CENTER);
+        titulo = new JLabel("Sistema de Joalheria", JLabel.CENTER);
+        titulo.setFont(new Font("Serif", Font.BOLD, 26));
+        titulo.setForeground(new Color(160, 120, 20));
 
-        setLayout(new GridLayout(3,1));
+        // Carrega e redimensiona a imagem
+        ImageIcon joias = new ImageIcon("./imgs/joias.png");
+        Image img = joias.getImage().getScaledInstance(500, 320, Image.SCALE_SMOOTH);
+        imagem = new JLabel(new ImageIcon(img), JLabel.CENTER);
 
-        add(linha1);
-        add(linha2);
+        setLayout(new GridLayout(3, 1));
+
+        add(titulo);
+        add(imagem);
         add(new JLabel());
 
         JMenu menuCadastrar = new JMenu("Cadastrar");
-        JMenuItem cadastrarJoia = new JMenuItem("Cadastrar Joia");
-        menuCadastrar.add(cadastrarJoia);
+        JMenuItem itemCadastrar = new JMenuItem("Cadastrar Joia");
 
         JMenu menuPesquisar = new JMenu("Pesquisar");
-        JMenuItem pesquisarJoia = new JMenuItem("Pesquisar Joia");
-        menuPesquisar.add(pesquisarJoia);
+        JMenuItem itemPesquisar = new JMenuItem("Pesquisar Joia");
 
         JMenu menuRemover = new JMenu("Remover");
-        JMenuItem removerJoia = new JMenuItem("Remover Joia");
-        menuRemover.add(removerJoia);
+        JMenuItem itemRemover = new JMenuItem("Remover Joia");
 
         JMenu menuSalvar = new JMenu("Salvar");
-        JMenuItem salvarDados = new JMenuItem("Salvar Dados");
-        menuSalvar.add(salvarDados);
+        JMenuItem itemSalvar = new JMenuItem("Salvar Dados");
 
-        cadastrarJoia.addActionListener(new ControllerCadastrar(sistema, this));
-        pesquisarJoia.addActionListener(new ControllerPesquisar(sistema, this));
-        removerJoia.addActionListener(new ControllerRemover(sistema, this));
-        salvarDados.addActionListener(new ControllerSalvar(sistema, this));
+        menuCadastrar.add(itemCadastrar);
+        menuPesquisar.add(itemPesquisar);
+        menuRemover.add(itemRemover);
+        menuSalvar.add(itemSalvar);
+
+        itemCadastrar.addActionListener(new ControllerCadastrar(sistema, this));
+        itemPesquisar.addActionListener(new ControllerPesquisar(sistema, this));
+        itemRemover.addActionListener(new ControllerRemover(sistema, this));
+        itemSalvar.addActionListener(new ControllerSalvar(sistema, this));
 
         barraDeMenu.add(menuCadastrar);
         barraDeMenu.add(menuPesquisar);
@@ -64,5 +70,11 @@ public class TelaPrincipal extends JFrame {
         barraDeMenu.add(menuSalvar);
 
         setJMenuBar(barraDeMenu);
+    }
+
+    public static void main(String[] args) {
+        JFrame janela = new TelaPrincipal();
+        janela.setVisible(true);
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

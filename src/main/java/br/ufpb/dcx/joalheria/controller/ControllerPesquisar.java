@@ -20,16 +20,19 @@ public class ControllerPesquisar implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        String nome = JOptionPane.showInputDialog(janelaPrincipal,
-                "Nome da joia:");
+        String nome = JOptionPane.showInputDialog(
+                janelaPrincipal,
+                "Digite o nome da joia:");
 
         Joia joia = sistema.pesquisarJoia(nome);
 
         if (joia != null) {
-            JOptionPane.showMessageDialog(janelaPrincipal,
+            JOptionPane.showMessageDialog(
+                    janelaPrincipal,
                     joia.toString());
         } else {
-            JOptionPane.showMessageDialog(janelaPrincipal,
+            JOptionPane.showMessageDialog(
+                    janelaPrincipal,
                     "Joia não encontrada.");
         }
     }

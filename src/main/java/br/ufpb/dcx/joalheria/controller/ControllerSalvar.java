@@ -23,15 +23,15 @@ public class ControllerSalvar implements ActionListener {
         try {
             sistema.salvarDados();
 
-            JOptionPane.showMessageDialog(janelaPrincipal,
+            JOptionPane.showMessageDialog(
+                    janelaPrincipal,
                     "Dados salvos com sucesso!");
 
         } catch (IOException ex) {
 
-            JOptionPane.showMessageDialog(janelaPrincipal,
+            JOptionPane.showMessageDialog(
+                    janelaPrincipal,
                     "Erro ao salvar os dados.");
-
         }
-
     }
 }

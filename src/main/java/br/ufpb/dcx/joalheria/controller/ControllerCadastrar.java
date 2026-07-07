@@ -19,25 +19,30 @@ public class ControllerCadastrar implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        String nome = JOptionPane.showInputDialog(janelaPrincipal,
-                "Nome da joia:");
-
-        String material = JOptionPane.showInputDialog(janelaPrincipal,
-                "Material:");
-
-        double preco = Double.parseDouble(JOptionPane.showInputDialog(
+        String nome = JOptionPane.showInputDialog(
                 janelaPrincipal,
-                "Preço:"
-        ));
+                "Digite o nome da joia:");
+
+        String material = JOptionPane.showInputDialog(
+                janelaPrincipal,
+                "Digite o material:");
+
+        double preco = Double.parseDouble(
+                JOptionPane.showInputDialog(
+                        janelaPrincipal,
+                        "Digite o preço:")
+        );
 
         boolean cadastrou = sistema.cadastrarJoia(nome, material, preco);
 
         if (cadastrou) {
-            JOptionPane.showMessageDialog(janelaPrincipal,
+            JOptionPane.showMessageDialog(
+                    janelaPrincipal,
                     "Joia cadastrada com sucesso!");
         } else {
-            JOptionPane.showMessageDialog(janelaPrincipal,
-                    "A joia já existe ou o preço é inválido.");
+            JOptionPane.showMessageDialog(
+                    janelaPrincipal,
+                    "Não foi possível cadastrar a joia.");
         }
     }
 }

@@ -19,16 +19,19 @@ public class ControllerRemover implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        String nome = JOptionPane.showInputDialog(janelaPrincipal,
-                "Nome da joia:");
+        String nome = JOptionPane.showInputDialog(
+                janelaPrincipal,
+                "Digite o nome da joia que deseja remover:");
 
         boolean removeu = sistema.removerJoia(nome);
 
         if (removeu) {
-            JOptionPane.showMessageDialog(janelaPrincipal,
+            JOptionPane.showMessageDialog(
+                    janelaPrincipal,
                     "Joia removida com sucesso!");
         } else {
-            JOptionPane.showMessageDialog(janelaPrincipal,
+            JOptionPane.showMessageDialog(
+                    janelaPrincipal,
                     "Joia não encontrada.");
         }
     }

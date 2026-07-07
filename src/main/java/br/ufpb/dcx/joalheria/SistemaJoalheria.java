@@ -10,10 +10,8 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
     private GravadorDeDados gravador;
 
     public SistemaJoalheria() {
-
         this.joias = new HashMap<>();
         this.gravador = new GravadorDeDados();
-
     }
 
     @Override
@@ -43,6 +41,11 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
         }
 
         return false;
+    }
+
+    @Override
+    public Map<String, Joia> getJoias() {
+        return joias;
     }
 
     @Override
