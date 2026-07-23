@@ -6,10 +6,10 @@ import java.util.Objects;
 public class Joia implements Serializable {
 
     private String nome;
-    private String material;
+    private MATERIAL material;
     private double preco;
 
-    public Joia(String nome, String material, double preco) {
+    public Joia(String nome, MATERIAL material, double preco) {
         this.nome = nome;
         this.material = material;
         this.preco = preco;
@@ -19,7 +19,7 @@ public class Joia implements Serializable {
         return nome;
     }
 
-    public String getMaterial() {
+    public MATERIAL getMaterial() {
         return material;
     }
 
@@ -31,7 +31,7 @@ public class Joia implements Serializable {
         this.nome = nome;
     }
 
-    public void setMaterial(String material) {
+    public void setMaterial(MATERIAL material) {
         this.material = material;
     }
 

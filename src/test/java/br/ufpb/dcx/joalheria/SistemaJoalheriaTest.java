@@ -13,7 +13,7 @@ public class SistemaJoalheriaTest {
 
         assertNull(sistema.pesquisarJoia("Anel"));
 
-        boolean cadastrou = sistema.cadastrarJoia("Anel", "Ouro", 1500);
+        boolean cadastrou = sistema.cadastrarJoia("Anel", MATERIAL.OURO, 1500);
 
         assertTrue(cadastrou);
 
@@ -30,7 +30,7 @@ public class SistemaJoalheriaTest {
 
         SistemaJoalheria sistema = new SistemaJoalheria();
 
-        sistema.cadastrarJoia("Colar", "Prata", 800);
+        sistema.cadastrarJoia("Colar", MATERIAL.PRATA, 800);
 
         assertNotNull(sistema.pesquisarJoia("Colar"));
 

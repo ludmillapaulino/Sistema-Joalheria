@@ -1,13 +1,15 @@
 package br.ufpb.dcx.joalheria;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SistemaJoalheria implements SistemaJoalheriaInterface {
 
     private Map<String, Joia> joias;
-    private GravadorDeDados gravador;
+    private final GravadorDeDados gravador;
 
     public SistemaJoalheria() {
         this.joias = new HashMap<>();
@@ -15,7 +17,7 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
     }
 
     @Override
-    public boolean cadastrarJoia(String nome, String material, double preco) {
+    public boolean cadastrarJoia(String nome, MATERIAL material, double preco) {
 
         if (joias.containsKey(nome) || preco < 0) {
             return false;
@@ -41,6 +43,54 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
         }
 
         return false;
+    }
+
+    public List<Joia> pesquisarJoiasComPrecoMaiorQue(double valor) {
+        List<Joia> lista = new ArrayList<>();
+        for(Joia j : this.joias.values()) {
+            if(j.getPreco() > valor) {
+                lista.add(j);
+            }
+        }
+        return lista;
+    }
+
+    public List<Joia> pesquisarJoiasPeloMaterial(MATERIAL material) {
+        return null;
+    }
+
+    public Joia pesquisarJoiaMaisCara() {
+        Joia joiaMaisCara = this.joias.values().iterator().next();
+        double maiorPreco = this.joias.values().iterator().next().getPreco();
+
+        for(Joia j : this.joias.values()) {
+            if(j.getPreco() >= maiorPreco) {
+                maiorPreco = j.getPreco();
+            }
+        }
+        return joiaMaisCara;
+    }
+
+    public Joia pesquisarJoiaMaisBarata() {
+        Joia joiaMaisBarata = this.joias.values().iterator().next();
+        double menorPreco = this.joias.values().iterator().next().getPreco();
+
+        for(Joia j : this.joias.values()) {
+            if(j.getPreco() <= menorPreco) {
+                menorPreco = j.getPreco();
+            }
+        }
+        return joiaMaisBarata;
+    }
+
+    public int contarJoiasDoTipo(MATERIAL material) {
+        int contador = 0;
+        for(Joia j : this.joias.values()) {
+            if(j.getMaterial().equals(material)) {
+                contador++;
+            }
+        }
+        return contador;
     }
 
     @Override

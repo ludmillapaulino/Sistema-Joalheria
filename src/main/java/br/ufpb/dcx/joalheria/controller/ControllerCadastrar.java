@@ -1,5 +1,6 @@
 package br.ufpb.dcx.joalheria.controller;
 
+import br.ufpb.dcx.joalheria.MATERIAL;
 import br.ufpb.dcx.joalheria.SistemaJoalheria;
 
 import javax.swing.*;
@@ -23,9 +24,29 @@ public class ControllerCadastrar implements ActionListener {
                 janelaPrincipal,
                 "Digite o nome da joia:");
 
-        String material = JOptionPane.showInputDialog(
-                janelaPrincipal,
-                "Digite o material:");
+        MATERIAL material = MATERIAL.PRATA;
+
+        int opcao = Integer.parseInt(JOptionPane.showInputDialog(janelaPrincipal, "Qual é o tipo de material?\n1 - Pérola\n2 - Bronze\n3 - Prata\n4 - Ouro\n 5 - Diamante"));
+
+        switch(opcao){
+            case 1:
+                material = MATERIAL.PEROLA;
+                break;
+            case 2:
+                material = MATERIAL.BRONZE;
+                break;
+            case 3:
+                material = MATERIAL.PRATA;
+                break;
+            case 4:
+                material = MATERIAL.OURO;
+                break;
+            case 5:
+                material = MATERIAL.DIAMANTE;
+                break;
+            default:
+                JOptionPane.showMessageDialog(janelaPrincipal, "Nenhuma opção válida foi inserida. Será usado o tipo padrão(prata)");
+        }
 
         double preco = Double.parseDouble(
                 JOptionPane.showInputDialog(

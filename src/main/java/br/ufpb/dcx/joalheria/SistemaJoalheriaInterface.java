@@ -1,6 +1,7 @@
 package br.ufpb.dcx.joalheria;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface SistemaJoalheriaInterface {
 
@@ -12,7 +13,7 @@ public interface SistemaJoalheriaInterface {
      * @param preco Preço da joia.
      * @return true se a joia foi cadastrada com sucesso; false caso seja o contrário.
      */
-    boolean cadastrarJoia(String nome, String material, double preco);
+    boolean cadastrarJoia(String nome, MATERIAL material, double preco);
 
     /**
      * Pesquisa uma joia pelo nome.
@@ -31,10 +32,54 @@ public interface SistemaJoalheriaInterface {
     boolean removerJoia(String nome);
 
     /**
+     * Pesquisa no sistema as joias que tem o preco maior do que o passado como parametro
+     *
+     * @param valor valor a ser comparado.
+     * @return retorna uma lista que tem o preço maior do que o valor passado como parâmetro
+     */
+
+    List<Joia> pesquisarJoiasComPrecoMaiorQue(double valor);
+
+    /**
+     * Pesquisa no sistema as joias que são compostas pelo material passado como parâmetro
+     *
+     * @param material tipo de material a ser pesquisado
+     * @return retorna uma lista de Joias que são compostas pelo material passado como parâmetro
+     */
+
+    List<Joia> pesquisarJoiasPeloMaterial(MATERIAL material);
+
+    /**
+     * Conta o número de joias que são compostas pelo material passado como parâmetro
+     *
+     * @param material tipo de material que vai ser usado para a contagem
+     * @return retorna um número inteiro que representa a quantidade de jóias que são compostas pelo material passado como parâmetro
+     */
+
+    int contarJoiasDoTipo(MATERIAL material);
+
+    /**
+     * Pesquisa a joia mais cara cadastrada no sistema
+     *
+     * @return retorna a joia mais cara cadastrada no sistema
+     */
+
+    Joia pesquisarJoiaMaisCara();
+
+    /**
+     * Pesquisa a joia mais barata cadastrada no sistema
+     *
+     * @return retorna a joia mais barata cadastrada no sistema
+     */
+
+    Joia pesquisarJoiaMaisBarata();
+
+    /**
      * Salva os dados das joias em arquivo.
      *
      * @throws IOException Caso ocorra erro durante a gravação.
      */
+
     void salvarDados() throws IOException;
 
     /**
