@@ -1,11 +1,13 @@
 package br.ufpb.dcx.joalheria.controller;
 
+import br.ufpb.dcx.joalheria.Joia;
 import br.ufpb.dcx.joalheria.MATERIAL;
 import br.ufpb.dcx.joalheria.SistemaJoalheria;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class ControllerPesquisarPorMaterial implements ActionListener {
 
@@ -43,6 +45,12 @@ public class ControllerPesquisarPorMaterial implements ActionListener {
                 JOptionPane.showMessageDialog(janelaPrincipal, "Nenhuma opção válida foi inserida. Será usado o tipo padrão(prata)");
         }
 
+        List<Joia> listaJoias = this.sistema.pesquisarJoiasPeloMaterial(material);
+        String textoCompleto = "Joias feitas de " + (material.toString()) + "\n";
 
+        for(Joia j : listaJoias) {
+                textoCompleto += j.toString() + "\n";
+        }
+        JOptionPane.showMessageDialog(janelaPrincipal, textoCompleto);
     }
 }

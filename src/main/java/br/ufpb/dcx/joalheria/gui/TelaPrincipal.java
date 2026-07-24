@@ -1,10 +1,7 @@
 package br.ufpb.dcx.joalheria.gui;
 
 import br.ufpb.dcx.joalheria.SistemaJoalheria;
-import br.ufpb.dcx.joalheria.controller.ControllerCadastrar;
-import br.ufpb.dcx.joalheria.controller.ControllerPesquisar;
-import br.ufpb.dcx.joalheria.controller.ControllerRemover;
-import br.ufpb.dcx.joalheria.controller.ControllerSalvar;
+import br.ufpb.dcx.joalheria.controller.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -95,7 +92,9 @@ public class TelaPrincipal extends JFrame {
         JMenuItem itemCadastrar = new JMenuItem("Cadastrar Joia");
 
         JMenu menuPesquisar = new JMenu("Pesquisar");
-        JMenuItem itemPesquisar = new JMenuItem("Pesquisar Joia");
+        JMenuItem itemPesquisarNome = new JMenuItem("Pesquisar Joia por nome");
+        JMenuItem itemPesquisarMaterial = new JMenuItem("Pesquisar joias por material");
+        JMenuItem itemPesquisarValor = new JMenuItem("Pesquisar joias por preco limite");
 
         JMenu menuRemover = new JMenu("Remover");
         JMenuItem itemRemover = new JMenuItem("Remover Joia");
@@ -104,12 +103,16 @@ public class TelaPrincipal extends JFrame {
         JMenuItem itemSalvar = new JMenuItem("Salvar Dados");
 
         itemCadastrar.addActionListener(new ControllerCadastrar(sistema,this));
-        itemPesquisar.addActionListener(new ControllerPesquisar(sistema,this));
+        itemPesquisarNome.addActionListener(new ControllerPesquisar(sistema,this));
+        itemPesquisarMaterial.addActionListener(new ControllerPesquisarPorMaterial(sistema, this));
+        itemPesquisarValor.addActionListener(new ControllerPesquisarPorPreco(sistema, this));
         itemRemover.addActionListener(new ControllerRemover(sistema,this));
         itemSalvar.addActionListener(new ControllerSalvar(sistema,this));
 
         menuCadastrar.add(itemCadastrar);
-        menuPesquisar.add(itemPesquisar);
+        menuPesquisar.add(itemPesquisarNome);
+        menuPesquisar.add(itemPesquisarMaterial);
+        menuPesquisar.add(itemPesquisarValor);
         menuRemover.add(itemRemover);
         menuSalvar.add(itemSalvar);
 

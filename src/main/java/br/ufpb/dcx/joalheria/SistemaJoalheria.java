@@ -1,10 +1,7 @@
 package br.ufpb.dcx.joalheria;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SistemaJoalheria implements SistemaJoalheriaInterface {
 
@@ -14,6 +11,10 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
     public SistemaJoalheria() {
         this.joias = new HashMap<>();
         this.gravador = new GravadorDeDados();
+    }
+
+    public Collection<Joia> getJoias() {
+        return this.joias.values();
     }
 
     @Override
@@ -58,8 +59,9 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
         double maiorPreco = this.joias.values().iterator().next().getPreco();
 
         for(Joia j : this.joias.values()) {
-            if(j.getPreco() >= maiorPreco) {
+            if(j.getPreco() > maiorPreco) {
                 maiorPreco = j.getPreco();
+                joiaMaisCara = j;
             }
         }
         return joiaMaisCara;
@@ -70,8 +72,9 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
         double menorPreco = this.joias.values().iterator().next().getPreco();
 
         for(Joia j : this.joias.values()) {
-            if(j.getPreco() <= menorPreco) {
+            if(j.getPreco() < menorPreco) {
                 menorPreco = j.getPreco();
+                joiaMaisBarata = j;
             }
         }
         return joiaMaisBarata;
