@@ -1,6 +1,6 @@
 # Sistema de Joalheria
 
-## Sobre o Projeto
+## Sobre o Projeto:
 
 O Sistema de Joalheria é uma aplicação desenvolvida em Java como atividade da disciplina de Programação Orientada a Objetos (POO).
 
@@ -10,7 +10,7 @@ A aplicação foi desenvolvida utilizando a biblioteca Java Swing para a constru
 
 ---
 
-## Funcionalidades
+## Funcionalidades:
 
 O sistema oferece as seguintes funcionalidades:
 
@@ -27,7 +27,7 @@ O sistema oferece as seguintes funcionalidades:
 
 ---
 
-## Tecnologias Utilizadas
+## Tecnologias Utilizadas:
 
 - Java
 - Java Swing
@@ -39,7 +39,7 @@ O sistema oferece as seguintes funcionalidades:
 
 ---
 
-## Estrutura do Projeto
+## Estrutura do Projeto:
 
 O projeto está organizado em pacotes.
 
@@ -65,7 +65,7 @@ src
 
 ---
 
-## Interface Gráfica
+## Interface Gráfica:
 
 A interface gráfica foi desenvolvida utilizando Java Swing e possui:
 
@@ -82,13 +82,13 @@ A interface gráfica foi desenvolvida utilizando Java Swing e possui:
 
 ---
 
-## Persistência dos Dados
+## Persistência dos Dados:
 
 Os dados cadastrados são armazenados em arquivo utilizando serialização de objetos por meio das classes `ObjectOutputStream` e `ObjectInputStream`. Dessa forma, as informações permanecem disponíveis mesmo após o encerramento da aplicação.
 
 ---
 
-## Testes
+## Testes:
 
 O projeto possui testes desenvolvidos com JUnit para verificar o funcionamento das principais funcionalidades do sistema, incluindo:
 
