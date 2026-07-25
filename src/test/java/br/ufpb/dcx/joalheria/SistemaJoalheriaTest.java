@@ -1,5 +1,6 @@
 package br.ufpb.dcx.joalheria;
 
+import br.ufpb.dcx.joalheria.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,7 +22,7 @@ public class SistemaJoalheriaTest {
 
         assertNotNull(joia);
         assertEquals("Anel", joia.getNome());
-        assertEquals("Ouro", joia.getMaterial());
+        assertEquals(MATERIAL.OURO, joia.getMaterial());
         assertEquals(1500, joia.getPreco());
     }
 
@@ -39,5 +40,42 @@ public class SistemaJoalheriaTest {
         assertTrue(removeu);
 
         assertNull(sistema.pesquisarJoia("Colar"));
+    }
+
+    @Test
+    public void testaPesquisarPorMaterial() {
+
+        SistemaJoalheria sistema = new SistemaJoalheria();
+
+        sistema.cadastrarJoia("Anel", MATERIAL.OURO, 1000);
+        sistema.cadastrarJoia("Colar", MATERIAL.PRATA, 500);
+
+        assertEquals(1,
+                sistema.pesquisarJoiasPeloMaterial(MATERIAL.OURO).size());
+    }
+
+    @Test
+    public void testaJoiaMaisCara() {
+
+        SistemaJoalheria sistema = new SistemaJoalheria();
+
+        sistema.cadastrarJoia("Anel", MATERIAL.OURO, 1000);
+        sistema.cadastrarJoia("Colar", MATERIAL.PRATA, 3000);
+
+        assertEquals("Colar",
+                sistema.pesquisarJoiaMaisCara().getNome());
+    }
+
+    @Test
+    public void testaContarJoiasDoTipo() {
+
+        SistemaJoalheria sistema = new SistemaJoalheria();
+
+        sistema.cadastrarJoia("Anel", MATERIAL.OURO, 1000);
+        sistema.cadastrarJoia("Brinco", MATERIAL.OURO, 500);
+        sistema.cadastrarJoia("Colar", MATERIAL.PRATA, 700);
+
+        assertEquals(2,
+                sistema.contarJoiasDoTipo(MATERIAL.OURO));
     }
 }
