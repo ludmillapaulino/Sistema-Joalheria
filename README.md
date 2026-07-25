@@ -4,9 +4,9 @@
 
 O Sistema de Joalheria é uma aplicação desenvolvida em Java como atividade da disciplina de Programação Orientada a Objetos (POO).
 
-O sistema possibilita o cadastro, a pesquisa, a remoção e o armazenamento de informações de uma joalheria. Para cada joia são registrados seu nome, material de fabricação e preço.
+O sistema possibilita o cadastro, a pesquisa, a remoção e o gerenciamento de joias. Para cada joia são registrados seu nome, material de fabricação e preço.
 
-A aplicação foi desenvolvida utilizando a biblioteca Java Swing para a construção da interface gráfica. Além disso, o projeto faz uso de coleções do Java para armazenar as informações em memória e da serialização de objetos para permitir que os dados sejam salvos em arquivo e recuperados posteriormente, garantindo a persistência das informações entre diferentes execuções do sistema.
+A aplicação foi desenvolvida utilizando a biblioteca Java Swing para a construção da interface gráfica. Além disso, o projeto utiliza a coleção `Map` para armazenar as informações em memória, Streams para realizar pesquisas e serialização de objetos para permitir que os dados sejam salvos em arquivo e recuperados posteriormente, garantindo a persistência das informações entre diferentes execuções do sistema.
 
 ---
 
@@ -15,11 +15,15 @@ A aplicação foi desenvolvida utilizando a biblioteca Java Swing para a constru
 O sistema oferece as seguintes funcionalidades:
 
 - Cadastro de joias;
-- Pesquisa de joias pelo nome;
-- Remoção de joias cadastradas;
+- Pesquisa de joia pelo nome;
+- Pesquisa de joias por material;
+- Pesquisa de joias com preço superior ao valor informado;
+- Pesquisa da joia mais cara cadastrada;
+- Pesquisa da joia mais barata cadastrada;
+- Contagem de joias por material;
+- Remoção de joias;
 - Salvamento dos dados em arquivo;
-- Recuperação dos dados previamente salvos;
-- Interface gráfica desenvolvida com Java Swing.
+- Recuperação dos dados previamente salvos.
 
 ---
 
@@ -29,15 +33,17 @@ O sistema oferece as seguintes funcionalidades:
 - Java Swing
 - Maven
 - JUnit 5
+- Collections (Map)
+- Java Streams
 - Serialização de Objetos (`ObjectInputStream` e `ObjectOutputStream`)
 
 ---
 
 ## Estrutura do Projeto
 
-O projeto está organizado em pacotes para facilitar sua manutenção e organização.
+O projeto está organizado em pacotes.
 
-```text
+```
 src
 ├── main
 │   └── java
@@ -46,6 +52,7 @@ src
 │           ├── gui
 │           ├── GravadorDeDados.java
 │           ├── Joia.java
+│           ├── MATERIAL.java
 │           ├── ProgramaPrincipal.java
 │           ├── SistemaJoalheria.java
 │           └── SistemaJoalheriaInterface.java
@@ -53,6 +60,7 @@ src
 └── test
     └── java
         └── br.ufpb.dcx.joalheria
+            └── SistemaJoalheriaTest.java
 ```
 
 ---
@@ -62,8 +70,12 @@ src
 A interface gráfica foi desenvolvida utilizando Java Swing e possui:
 
 - Janela principal;
-- Menu de opções;
+- Barra de menu;
 - Botões para as principais funcionalidades;
+- Cadastro de joias;
+- Pesquisa de joias;
+- Remoção de joias;
+- Salvamento e recuperação dos dados;
 - Ícones ilustrativos;
 - Imagem representativa da joalheria;
 - Caixas de diálogo para interação com o usuário.
@@ -78,11 +90,20 @@ Os dados cadastrados são armazenados em arquivo utilizando serialização de ob
 
 ## Testes
 
-O projeto possui testes desenvolvidos com JUnit para verificar o funcionamento das principais funcionalidades do sistema.
+O projeto possui testes desenvolvidos com JUnit para verificar o funcionamento das principais funcionalidades do sistema, incluindo:
+
+- Cadastro de joias;
+- Pesquisa por nome;
+- Remoção de joias;
+- Pesquisa por material;
+- Contagem de joias por material.
 
 ---
 
-
+## Autores
+** Jezrel Gomes de Oliveira**
+** Jose Vitor do Nascimento Rodrigues**
+** Leonardo Lucena Bizerril de Brito**
 **Ludmilla Paulino Correia**
 
-Disciplina: Programação Orientada a Objetos
+Disciplina: **Programação Orientada a Objetos**
