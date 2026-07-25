@@ -102,8 +102,11 @@ O projeto possui testes desenvolvidos com JUnit para verificar o funcionamento d
 
 ## Autores
 ** Jezrel Gomes de Oliveira**
+
 ** Jose Vitor do Nascimento Rodrigues**
+
 ** Leonardo Lucena Bizerril de Brito**
+
 **Ludmilla Paulino Correia**
 
 Disciplina: **Programação Orientada a Objetos**
