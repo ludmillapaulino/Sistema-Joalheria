@@ -13,7 +13,6 @@ public class TelaPrincipal extends JFrame {
 
     private SistemaJoalheria sistema = new SistemaJoalheria();
 
-
     private ImageIcon cadastrarImg = new ImageIcon(
             new ImageIcon("./icons/cadastrar.png")
                     .getImage()
@@ -34,12 +33,10 @@ public class TelaPrincipal extends JFrame {
                     .getImage()
                     .getScaledInstance(24, 24, Image.SCALE_SMOOTH));
 
-
     private JButton botaoCadastrar;
     private JButton botaoPesquisar;
     private JButton botaoRemover;
     private JButton botaoSalvar;
-
 
     private JMenuBar barraDeMenu = new JMenuBar();
 
@@ -87,44 +84,75 @@ public class TelaPrincipal extends JFrame {
 
         add(painelCentro);
 
-        // MENU
+        //================ MENU ==================
+
         JMenu menuCadastrar = new JMenu("Cadastrar");
         JMenuItem itemCadastrar = new JMenuItem("Cadastrar Joia");
 
         JMenu menuPesquisar = new JMenu("Pesquisar");
-        JMenuItem itemPesquisarNome = new JMenuItem("Pesquisar Joia por nome");
-        JMenuItem itemPesquisarMaterial = new JMenuItem("Pesquisar joias por material");
-        JMenuItem itemPesquisarValor = new JMenuItem("Pesquisar joias por preco limite");
+        JMenuItem itemPesquisarNome = new JMenuItem("Pesquisar por nome");
+        JMenuItem itemPesquisarMaterial = new JMenuItem("Pesquisar por material");
+        JMenuItem itemPesquisarPreco = new JMenuItem("Pesquisar por preço");
+        JMenuItem itemPesquisarCara = new JMenuItem("Joia mais cara");
+        JMenuItem itemPesquisarBarata = new JMenuItem("Joia mais barata");
+
+        JMenu menuContar = new JMenu("Contar");
+        JMenuItem itemContar = new JMenuItem("Contar por material");
 
         JMenu menuRemover = new JMenu("Remover");
         JMenuItem itemRemover = new JMenuItem("Remover Joia");
 
-        JMenu menuSalvar = new JMenu("Salvar");
+        JMenu menuArquivo = new JMenu("Arquivo");
         JMenuItem itemSalvar = new JMenuItem("Salvar Dados");
+        JMenuItem itemRecuperar = new JMenuItem("Recuperar Dados");
+
+        // Controllers
 
         itemCadastrar.addActionListener(new ControllerCadastrar(sistema,this));
+
         itemPesquisarNome.addActionListener(new ControllerPesquisar(sistema,this));
-        itemPesquisarMaterial.addActionListener(new ControllerPesquisarPorMaterial(sistema, this));
-        itemPesquisarValor.addActionListener(new ControllerPesquisarPorPreco(sistema, this));
+        itemPesquisarMaterial.addActionListener(new ControllerPesquisarPorMaterial(sistema,this));
+        itemPesquisarPreco.addActionListener(new ControllerPesquisarPorPreco(sistema,this));
+        itemPesquisarCara.addActionListener(new ControllerPesquisarJoiaCara(sistema,this));
+        itemPesquisarBarata.addActionListener(new ControllerPesquisarJoiaBarata(sistema,this));
+
+        itemContar.addActionListener(new ControllerContarJoias(sistema,this));
+
         itemRemover.addActionListener(new ControllerRemover(sistema,this));
+
         itemSalvar.addActionListener(new ControllerSalvar(sistema,this));
+        itemRecuperar.addActionListener(new ControllerRecuperarDados(sistema,this));
+
+        // Adicionando itens aos menus
 
         menuCadastrar.add(itemCadastrar);
+
         menuPesquisar.add(itemPesquisarNome);
         menuPesquisar.add(itemPesquisarMaterial);
-        menuPesquisar.add(itemPesquisarValor);
+        menuPesquisar.add(itemPesquisarPreco);
+        menuPesquisar.add(itemPesquisarCara);
+        menuPesquisar.add(itemPesquisarBarata);
+
+        menuContar.add(itemContar);
+
         menuRemover.add(itemRemover);
-        menuSalvar.add(itemSalvar);
+
+        menuArquivo.add(itemSalvar);
+        menuArquivo.add(itemRecuperar);
+
+        // Barra de menu
 
         barraDeMenu.add(menuCadastrar);
         barraDeMenu.add(menuPesquisar);
+        barraDeMenu.add(menuContar);
         barraDeMenu.add(menuRemover);
-        barraDeMenu.add(menuSalvar);
+        barraDeMenu.add(menuArquivo);
 
         setJMenuBar(barraDeMenu);
     }
 
     public static void main(String[] args) {
+
         JFrame janela = new TelaPrincipal();
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
