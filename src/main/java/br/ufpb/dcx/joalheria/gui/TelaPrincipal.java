@@ -84,8 +84,6 @@ public class TelaPrincipal extends JFrame {
 
         add(painelCentro);
 
-        //================ MENU ==================
-
         JMenu menuCadastrar = new JMenu("Cadastrar");
         JMenuItem itemCadastrar = new JMenuItem("Cadastrar Joia");
 
@@ -99,6 +97,9 @@ public class TelaPrincipal extends JFrame {
         JMenu menuContar = new JMenu("Contar");
         JMenuItem itemContar = new JMenuItem("Contar por material");
 
+        JMenu menuListar = new JMenu("Listar");
+        JMenuItem itemListar = new JMenuItem("Listar todas as joias");
+
         JMenu menuRemover = new JMenu("Remover");
         JMenuItem itemRemover = new JMenuItem("Remover Joia");
 
@@ -106,7 +107,6 @@ public class TelaPrincipal extends JFrame {
         JMenuItem itemSalvar = new JMenuItem("Salvar Dados");
         JMenuItem itemRecuperar = new JMenuItem("Recuperar Dados");
 
-        // Controllers
 
         itemCadastrar.addActionListener(new ControllerCadastrar(sistema,this));
 
@@ -118,12 +118,13 @@ public class TelaPrincipal extends JFrame {
 
         itemContar.addActionListener(new ControllerContarJoias(sistema,this));
 
+        itemListar.addActionListener(new ControllerListarJoias(sistema,this));
+
         itemRemover.addActionListener(new ControllerRemover(sistema,this));
 
         itemSalvar.addActionListener(new ControllerSalvar(sistema,this));
         itemRecuperar.addActionListener(new ControllerRecuperarDados(sistema,this));
 
-        // Adicionando itens aos menus
 
         menuCadastrar.add(itemCadastrar);
 
@@ -135,16 +136,17 @@ public class TelaPrincipal extends JFrame {
 
         menuContar.add(itemContar);
 
+        menuListar.add(itemListar);
+
         menuRemover.add(itemRemover);
 
         menuArquivo.add(itemSalvar);
         menuArquivo.add(itemRecuperar);
 
-        // Barra de menu
-
         barraDeMenu.add(menuCadastrar);
         barraDeMenu.add(menuPesquisar);
         barraDeMenu.add(menuContar);
+        barraDeMenu.add(menuListar);
         barraDeMenu.add(menuRemover);
         barraDeMenu.add(menuArquivo);
 

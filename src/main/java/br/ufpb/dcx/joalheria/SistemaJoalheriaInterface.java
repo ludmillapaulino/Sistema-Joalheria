@@ -1,6 +1,7 @@
 package br.ufpb.dcx.joalheria;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 
 public interface SistemaJoalheriaInterface {
@@ -11,7 +12,7 @@ public interface SistemaJoalheriaInterface {
      * @param nome Nome da joia.
      * @param material Material da joia.
      * @param preco Preço da joia.
-     * @return true se a joia foi cadastrada com sucesso; false caso seja o contrário.
+     * @return true se a joia foi cadastrada com sucesso; false caso contrário.
      */
     boolean cadastrarJoia(String nome, MATERIAL material, double preco);
 
@@ -32,58 +33,59 @@ public interface SistemaJoalheriaInterface {
     boolean removerJoia(String nome);
 
     /**
-     * Pesquisa no sistema as joias que tem o preco maior do que o passado como parametro
+     * Pesquisa joias com preço maior que o valor informado.
      *
-     * @param valor valor a ser comparado.
-     * @return retorna uma lista que tem o preço maior do que o valor passado como parâmetro
+     * @param valor Valor mínimo.
+     * @return Lista de joias encontradas.
      */
-
     List<Joia> pesquisarJoiasComPrecoMaiorQue(double valor);
 
     /**
-     * Pesquisa no sistema as joias que são compostas pelo material passado como parâmetro
+     * Pesquisa joias pelo material.
      *
-     * @param material tipo de material a ser pesquisado
-     * @return retorna uma lista de Joias que são compostas pelo material passado como parâmetro
+     * @param material Material desejado.
+     * @return Lista de joias encontradas.
      */
-
     List<Joia> pesquisarJoiasPeloMaterial(MATERIAL material);
 
     /**
-     * Conta o número de joias que são compostas pelo material passado como parâmetro
+     * Conta quantas joias existem de um determinado material.
      *
-     * @param material tipo de material que vai ser usado para a contagem
-     * @return retorna um número inteiro que representa a quantidade de jóias que são compostas pelo material passado como parâmetro
+     * @param material Material desejado.
+     * @return Quantidade de joias.
      */
-
     int contarJoiasDoTipo(MATERIAL material);
 
     /**
-     * Pesquisa a joia mais cara cadastrada no sistema
+     * Retorna a joia mais cara cadastrada.
      *
-     * @return retorna a joia mais cara cadastrada no sistema
+     * @return Joia mais cara.
      */
-
     Joia pesquisarJoiaMaisCara();
 
     /**
-     * Pesquisa a joia mais barata cadastrada no sistema
+     * Retorna a joia mais barata cadastrada.
      *
-     * @return retorna a joia mais barata cadastrada no sistema
+     * @return Joia mais barata.
      */
-
     Joia pesquisarJoiaMaisBarata();
 
     /**
-     * Salva os dados das joias em arquivo.
+     * Lista todas as joias cadastradas.
+     *
+     * @return Coleção contendo todas as joias.
+     */
+    Collection<Joia> listarJoias();
+
+    /**
+     * Salva os dados em arquivo.
      *
      * @throws IOException Caso ocorra erro durante a gravação.
      */
-
     void salvarDados() throws IOException;
 
     /**
-     * Recupera os dados das joias salvos em arquivo.
+     * Recupera os dados do arquivo.
      *
      * @throws IOException Caso ocorra erro durante a leitura.
      */

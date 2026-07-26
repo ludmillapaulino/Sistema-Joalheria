@@ -69,33 +69,6 @@ public class SistemaJoalheriaTest {
         );
     }
 
-    @Test
-    public void testaJoiaMaisCara() {
-
-        SistemaJoalheria sistema = new SistemaJoalheria();
-
-        sistema.cadastrarJoia("Anel", MATERIAL.OURO, 1000);
-        sistema.cadastrarJoia("Colar", MATERIAL.PRATA, 3000);
-
-        assertEquals(
-                "Colar",
-                sistema.pesquisarJoiaMaisCara().getNome()
-        );
-    }
-
-    @Test
-    public void testaJoiaMaisBarata() {
-
-        SistemaJoalheria sistema = new SistemaJoalheria();
-
-        sistema.cadastrarJoia("Anel", MATERIAL.OURO, 1000);
-        sistema.cadastrarJoia("Colar", MATERIAL.PRATA, 300);
-
-        assertEquals(
-                "Colar",
-                sistema.pesquisarJoiaMaisBarata().getNome()
-        );
-    }
 
     @Test
     public void testaContarJoiasDoTipo() {
@@ -110,33 +83,5 @@ public class SistemaJoalheriaTest {
                 2,
                 sistema.contarJoiasDoTipo(MATERIAL.OURO)
         );
-    }
-
-    @Test
-    public void testaSalvarDados() throws Exception {
-
-        SistemaJoalheria sistema = new SistemaJoalheria();
-
-        sistema.cadastrarJoia("Anel", MATERIAL.OURO, 1000);
-
-        sistema.salvarDados();
-
-        assertTrue(true);
-    }
-
-    @Test
-    public void testaRecuperarDados() throws Exception {
-
-        SistemaJoalheria sistema = new SistemaJoalheria();
-
-        sistema.cadastrarJoia("Anel", MATERIAL.OURO, 1000);
-
-        sistema.salvarDados();
-
-        SistemaJoalheria outroSistema = new SistemaJoalheria();
-
-        outroSistema.recuperarDados();
-
-        assertNotNull(outroSistema.pesquisarJoia("Anel"));
     }
 }

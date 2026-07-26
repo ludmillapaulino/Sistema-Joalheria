@@ -13,10 +13,6 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
         this.gravador = new GravadorDeDados();
     }
 
-    public Collection<Joia> getJoias() {
-        return this.joias.values();
-    }
-
     @Override
     public boolean cadastrarJoia(String nome, MATERIAL material, double preco) {
 
@@ -48,18 +44,14 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
 
     @Override
     public List<Joia> pesquisarJoiasComPrecoMaiorQue(double valor) {
-
-        return this.joias.values()
-                .stream()
+        return this.joias.values().stream()
                 .filter(joia -> joia.getPreco() > valor)
                 .toList();
     }
 
     @Override
     public List<Joia> pesquisarJoiasPeloMaterial(MATERIAL material) {
-
-        return this.joias.values()
-                .stream()
+        return this.joias.values().stream()
                 .filter(joia -> joia.getMaterial() == material)
                 .toList();
     }
@@ -71,10 +63,12 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
             return null;
         }
 
-        Joia joiaMaisCara = joias.values().iterator().next();
+        Joia joiaMaisCara = this.joias.values().iterator().next();
+        double maiorPreco = joiaMaisCara.getPreco();
 
-        for (Joia j : joias.values()) {
-            if (j.getPreco() > joiaMaisCara.getPreco()) {
+        for (Joia j : this.joias.values()) {
+            if (j.getPreco() > maiorPreco) {
+                maiorPreco = j.getPreco();
                 joiaMaisCara = j;
             }
         }
@@ -89,10 +83,12 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
             return null;
         }
 
-        Joia joiaMaisBarata = joias.values().iterator().next();
+        Joia joiaMaisBarata = this.joias.values().iterator().next();
+        double menorPreco = joiaMaisBarata.getPreco();
 
-        for (Joia j : joias.values()) {
-            if (j.getPreco() < joiaMaisBarata.getPreco()) {
+        for (Joia j : this.joias.values()) {
+            if (j.getPreco() < menorPreco) {
+                menorPreco = j.getPreco();
                 joiaMaisBarata = j;
             }
         }
@@ -105,13 +101,18 @@ public class SistemaJoalheria implements SistemaJoalheriaInterface {
 
         int contador = 0;
 
-        for (Joia j : joias.values()) {
+        for (Joia j : this.joias.values()) {
             if (j.getMaterial().equals(material)) {
                 contador++;
             }
         }
 
         return contador;
+    }
+
+    @Override
+    public Collection<Joia> listarJoias() {
+        return joias.values();
     }
 
     @Override
