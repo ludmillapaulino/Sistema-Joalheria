@@ -6,6 +6,35 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SistemaJoalheriaTest {
 
+
+    @Test
+    public void testaPesquisarPorPreco() {
+
+        SistemaJoalheria sistema = new SistemaJoalheria();
+
+        sistema.cadastrarJoia("Anel", MATERIAL.OURO, 1000);
+        sistema.cadastrarJoia("Colar", MATERIAL.PRATA, 300);
+
+        assertEquals(
+                1,
+                sistema.pesquisarJoiasComPrecoMaiorQue(500).size()
+        );
+    }
+
+    @Test
+    public void testaPesquisarPorMaterial() {
+
+        SistemaJoalheria sistema = new SistemaJoalheria();
+
+        sistema.cadastrarJoia("Anel", MATERIAL.OURO, 1000);
+        sistema.cadastrarJoia("Colar", MATERIAL.PRATA, 500);
+
+        assertEquals(
+                1,
+                sistema.pesquisarJoiasPeloMaterial(MATERIAL.OURO).size()
+        );
+    }
+
     @Test
     public void testaCadastroPesquisa() {
 
@@ -41,33 +70,6 @@ public class SistemaJoalheriaTest {
         assertNull(sistema.pesquisarJoia("Colar"));
     }
 
-    @Test
-    public void testaPesquisarPorMaterial() {
-
-        SistemaJoalheria sistema = new SistemaJoalheria();
-
-        sistema.cadastrarJoia("Anel", MATERIAL.OURO, 1000);
-        sistema.cadastrarJoia("Colar", MATERIAL.PRATA, 500);
-
-        assertEquals(
-                1,
-                sistema.pesquisarJoiasPeloMaterial(MATERIAL.OURO).size()
-        );
-    }
-
-    @Test
-    public void testaPesquisarPorPreco() {
-
-        SistemaJoalheria sistema = new SistemaJoalheria();
-
-        sistema.cadastrarJoia("Anel", MATERIAL.OURO, 1000);
-        sistema.cadastrarJoia("Colar", MATERIAL.PRATA, 300);
-
-        assertEquals(
-                1,
-                sistema.pesquisarJoiasComPrecoMaiorQue(500).size()
-        );
-    }
 
     @Test
     public void testaJoiaMaisCara() {
